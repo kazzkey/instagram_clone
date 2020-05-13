@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
 
 
   # GET /users/1
@@ -14,6 +14,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to new_session_path
+    end
   end
 
   # POST /users

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorites
+  resources :favorites, only: [:create, :destroy]
   resources :pictures do
     collection do
       post :confirm

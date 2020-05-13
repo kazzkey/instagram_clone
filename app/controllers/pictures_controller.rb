@@ -2,10 +2,15 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = Picture.all
+    if logged_in?
+      @pictures = Picture.all
+    else
+      redirect_to new_session_path
+    end
   end
 
   def show
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
   def new
@@ -27,7 +32,7 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
 
     if @picture.save
-      redirect_to @picture, notice: 'Picture was successfully created.'
+      redirect_to pictures_path, notice: 'Picture was successfully created.'
     else
       render :new
     end
@@ -35,7 +40,7 @@ class PicturesController < ApplicationController
 
   def update
     if @picture.update(picture_params)
-      redirect_to @picture, notice: 'Picture was successfully updated.'
+      redirect_to pictures_path, notice: 'Picture was successfully updated.'
     else
       render :edit
     end
@@ -43,7 +48,7 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture.destroy
-    redirect_to pictures_url, notice: 'Picture was successfully destroyed.'
+    redirect_to pictures_path, notice: 'Picture was successfully destroyed.'
   end
 
   private
