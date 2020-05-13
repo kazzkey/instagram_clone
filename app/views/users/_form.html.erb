@@ -13,28 +13,35 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "(例)田中太郎" %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, placeholder: "(例)aaa@bbb.com" %>
   </div>
 
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
-  </div>
+  <% if logged_in? %>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
+    <div class="field">
+      <%= form.label :profile %>
+      <%= form.text_area :profile %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password, placeholder: "※6文字以上" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :profile %>
-    <%= form.text_area :profile %>
-  </div>
+    <div class="field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, placeholder: "※6文字以上" %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

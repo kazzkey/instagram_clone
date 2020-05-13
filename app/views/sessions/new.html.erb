@@ -1,0 +1,21 @@
+<h1>Log in</h1>
+
+<%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder: "(例)aaa@bbb.com" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "６文字以上" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "ログイン" %>
+  </div>
+<% end %>
+<br>
+<div>
+  <%= link_to 'Sign up now', new_user_path %> and enjoy!
+</div>

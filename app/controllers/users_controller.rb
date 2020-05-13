@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
 
   # GET /users/1
   # GET /users/1.json
@@ -24,13 +19,10 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        redirect_to user_path(@user.id), notice: 'User was successfully created.'
-      else
-        render :new
-      end
+    if @user.save
+      redirect_to user_path(@user.id), notice: 'User was successfully created.'
+    else
+      render :new
     end
   end
 

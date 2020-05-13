@@ -11,13 +11,12 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
   <strong>Image:</strong>
-  <%= @user.image %>
+  <% if @user.image?%>
+    <%= image_tag @user.image.url,size: '200x200' %>
+  <% else %>
+    <%= image_tag 'no_image.png',size: '200x200' %>
+  <% end %>
 </p>
 
 <p>
@@ -26,4 +25,4 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', user_path %>
