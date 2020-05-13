@@ -13,7 +13,7 @@ ja:
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
-        password_confirmation: 確認用パスワード
+        password_confirmation: パスワード(確認用)
         image: 画像
         profile: プロフィール
         remember_me: ログインを記憶
