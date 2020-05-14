@@ -32,6 +32,7 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
 
     if @picture.save
+      PictureMailer.picture_mail(@picture).deliver
       redirect_to pictures_path, notice: 'Picture was successfully created.'
     else
       render :new
