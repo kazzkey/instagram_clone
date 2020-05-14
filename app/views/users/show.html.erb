@@ -1,28 +1,36 @@
 <h1>User Page</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<p>
-  <strong>Image:</strong>
+<div class="profile-image">
   <% if @user.image?%>
     <%= image_tag @user.image.url,size: '200x200' %>
   <% else %>
     <%= image_tag 'no_image.png',size: '200x200' %>
   <% end %>
-</p>
+</div>
 
-<p>
-  <strong>Profile:</strong>
-  <%= @user.profile %>
-</p>
+<div class="profile-edit">
+  <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="profile-count">
+  <p>
+    投稿<strong><%= @user.pictures.count %></strong>件
+  </p>
+
+  <p>
+    お気に入り<strong><%= @user.favorites.count %></strong>件
+  </p>
+</div>
+
+<div class="profile-contents">
+  <p>
+    <strong><%= @user.name %></strong>
+  </p>
+  <p>
+    <%= @user.profile %>
+  </p>
+</div>
+
 <%= link_to 'Back', pictures_path %>
