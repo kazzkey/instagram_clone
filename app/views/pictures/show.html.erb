@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @picture.user.name %>
+  <%= link_to @picture.user.name , user_path(@picture.user.id) %>
 </p>
 
 <p>

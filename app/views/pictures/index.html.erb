@@ -1,7 +1,7 @@
 <h1>Pictures</h1>
 
 <% @pictures.each do |picture| %>
-  <%= picture.user.name %>
+  <%= link_to picture.user.name , user_path(picture.user.id) %>
   <%= image_tag picture.image.url, size: '200x200' %>
   <%= picture.content %>
 
