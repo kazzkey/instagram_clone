@@ -1,9 +1,10 @@
 <h1>Pictures</h1>
 
 <% @pictures.each do |picture| %>
+  <%= picture.user.name %>
   <%= image_tag picture.image.url, size: '200x200' %>
   <%= picture.content %>
-  <%= picture.user.name %>
+
   <%= link_to 'Show', picture %>
   <%= link_to 'Edit', edit_picture_path(picture) %>
   <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
