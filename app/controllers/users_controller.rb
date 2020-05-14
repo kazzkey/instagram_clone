@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 
   def show
+    @pictures = @user.pictures
   end
 
   def new
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    @pictures = @user.favorite_pictures
+    @favorite_pictures = @user.favorite_pictures
   end
 
   private

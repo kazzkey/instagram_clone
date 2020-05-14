@@ -4,6 +4,8 @@
   <%= picture.user.name %>
   <%= image_tag picture.image.url, size: '200x200' %>
   <%= picture.content %>
+  
+  <p>いいね！数: <strong><%= picture.favorite_users.count %></strong></p>
 
   <%= link_to 'Show', picture %>
   <%= link_to 'Edit', edit_picture_path(picture) %>

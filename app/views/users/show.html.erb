@@ -35,4 +35,11 @@
   </p>
 </div>
 
+<% @pictures.each do |picture| %>
+  <%= image_tag picture.image.url, size: '200x200' %>
+  <%= picture.content %>
+
+  <%= link_to 'Show', picture %>
+<% end %>
+<br>
 <%= link_to 'Back', pictures_path %>

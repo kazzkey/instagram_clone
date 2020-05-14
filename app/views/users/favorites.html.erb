@@ -1,9 +1,9 @@
 <h1>Favorite Pictures</h1>
 
-<% @pictures.each do |picture| %>
-  <%= picture.user.name %>
-  <%= image_tag picture.image.url, size: '200x200' %>
-  <%= picture.content %>
+<% @favorite_pictures.each do |favorite_picture| %>
+  <%= favorite_picture.user.name %>
+  <%= image_tag favorite_picture.image.url, size: '200x200' %>
+  <%= favorite_picture.content %>
 <% end %>
 
 <%= link_to 'Back', pictures_path %>
