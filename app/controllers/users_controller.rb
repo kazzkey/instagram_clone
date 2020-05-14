@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy, :favorites]
+  before_action :login_check, only: [:show, :edit, :update, :favorites]
+  before_action :set_user, only: [:show, :edit, :update, :favorites]
 
 
   def show
@@ -11,11 +12,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if logged_in?
-      @user = User.find(params[:id])
-    else
-      redirect_to new_session_path
-    end
   end
 
   def create

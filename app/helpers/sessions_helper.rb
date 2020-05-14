@@ -5,4 +5,10 @@ module SessionsHelper
   def logged_in?
     current_user.present?
   end
+  def login_check
+    unless logged_in?
+      flash[:danger] = "ログインしてください"
+      redirect_to new_session_path
+    end 
+  end
 end
