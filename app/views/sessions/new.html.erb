@@ -1,21 +1,27 @@
-<h1>Log in</h1>
+<div class="login-form container">
+  <div class="form row">
+    <div class="logo">
+      <%= image_tag 'header_logo.png' %>
+    </div>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
+      <div class="form-group col-xs-12">
+        <%= form.email_field :email, placeholder: "メールアドレス" %>
+      </div>
 
-<%= form_with(scope: :session, url: sessions_path, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email, placeholder: "(例)aaa@bbb.com" %>
+      <div class="form-group col-xs-12">
+        <%= form.password_field :password, placeholder: "パスワード" %>
+      </div>
+      <div class="row col-xs-12">
+        <div class="btn col-xs-12">
+          <%= form.submit "ログイン" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, placeholder: "６文字以上" %>
+  <div class="session-suggest row">
+    <div class="col-xs-12">
+      アカウントをお持ちでないですか？
+      <strong><%= link_to '登録する', new_user_path %></strong>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit "ログイン" %>
-  </div>
-<% end %>
-<br>
-<div>
-  <%= link_to 'Sign up now', new_user_path %> and enjoy!
 </div>

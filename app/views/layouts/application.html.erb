@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PicApp</title>
+    <title>Baestagram</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,20 +10,36 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <% if current_user.image.url.present? %>
-        <%= image_tag current_user.image.url ,size: '30x30' %>
-      <%end%>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
+    <nav class="navbar navbar-default navbar-xixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header navbar-brand">
+          <%= link_to image_tag('header_logo.png'), pictures_path %>
+        </div>
+        <div class="navbar navbar-right">
+          <% if logged_in? %>
+            <% if current_user.image.url.present? %>
+              <%= link_to image_tag(current_user.image.url ,size: '30x30'), user_path(current_user.id)%>
+            <%end%>
+            <%= link_to "Profile", user_path(current_user.id) %>
+            <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+          <% else %>
+            <div class="btn-login">
+              <%= link_to "ログイン", new_session_path %>
+            </div>
+            <strong><%= link_to "登録", new_user_path %></strong>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <div class="alert">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+    </div>
 
     <%= yield %>
+    <footer>
+      <p>c 2020 BAESTAGRAM FROM KAO-BON</p>
+    </footer>
   </body>
 </html>

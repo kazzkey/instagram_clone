@@ -1,0 +1,42 @@
+.navbar-header img {
+  width: 40%;
+  margin-top: 6px;
+}
+.navbar-right {
+  margin: 15px 5px 0 0;
+}
+
+.logo img {
+  max-width: 80%;
+  height: auto;
+  margin: 30px 0;
+}
+.row {
+  max-width: 350px;
+  margin: auto;
+  background-color: #fff;
+}
+.container {
+  text-align: center;
+}
+.form {
+  border: solid 1px #DBDBDB;
+  border-radius: 2px;
+  padding: 15px;
+}
+.btn {
+  border: solid 1px #2695F6;
+  border-radius: 2px;
+  background-color: #2695F6;
+  // padding: 5px;
+  & a {
+    color: #fff;
+    font-weight: bold;
+  }
+}
+.session-suggest {
+  border: solid 1px #DBDBDB;
+  border-radius: 2px;
+  padding: 20px 10px;
+  margin-top: 10px;
+}

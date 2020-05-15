@@ -11,14 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %><br>
-    <%= form.text_field :name, placeholder: "(例)田中太郎" %>
+  <div class="form-group col-xs-12">
+    <%= form.text_field :name, placeholder: "ユーザーネーム" %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %><br>
-    <%= form.text_field :email, placeholder: "(例)aaa@bbb.com" %>
+  <div class="form-group col-xs-12">
+    <%= form.text_field :email, placeholder: "メールアドレス" %>
   </div>
 
   <% if logged_in? %>
@@ -32,18 +30,17 @@
       <%= form.text_area :profile,size: '50x10' %>
     </div>
   <% else %>
-    <div class="field">
-      <%= form.label :password %><br>
-      <%= form.password_field :password %>
+    <div class="form-group col-xs-12">
+      <%= form.password_field :password, placeholder: "パスワード" %>
     </div>
 
-    <div class="field">
-      <%= form.label :password_confirmation %><br>
-      <%= form.password_field :password_confirmation %>
+    <div class="form-group col-xs-12">
+      <%= form.password_field :password_confirmation, placeholder: "確認用パスワード" %>
     </div>
   <% end %>
-  <br>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row col-xs-12">
+    <div class="btn col-xs-12">
+      <%= form.submit "登録する" %>
+    </div>
   </div>
 <% end %>
