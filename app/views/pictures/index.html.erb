@@ -19,7 +19,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a><%= link_to 'Show', edit_picture_path(picture) %></a></li>
+              <li><a><%= link_to 'Show', picture_path(picture) %></a></li>
               <% if picture.user.id == current_user.id%>
                 <li><a><%= link_to 'Edit', edit_picture_path(picture) %></a></li>
                 <li><a><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></a></li>

@@ -20,8 +20,6 @@
             <div class="user-image pull-left">
               <% if current_user.image.url.present? %>
                 <%= link_to image_tag(current_user.image.url ,size: '30x30'), user_path(current_user.id)%>
-              <%else%>
-                <%= link_to image_tag(no_image.png), user_path(current_user.id) %>
               <%end%>
             </div>
             <div class="menu">
