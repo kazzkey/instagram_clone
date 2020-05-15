@@ -11,10 +11,19 @@
   height: auto;
   margin: 30px 0;
 }
-.row {
+.session-row {
   max-width: 350px;
   margin: auto;
   background-color: #fff;
+}
+.picture-row {
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  border: solid 1px #DBDBDB;
+  border-radius: 1px;
+  padding: 15px;
+  margin-bottom: 50px;
 }
 .container {
   text-align: center;

@@ -10,23 +10,32 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default navbar-xixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header navbar-brand">
           <%= link_to image_tag('header_logo.png'), pictures_path %>
         </div>
         <div class="navbar navbar-right">
           <% if logged_in? %>
-            <% if current_user.image.url.present? %>
-              <%= link_to image_tag(current_user.image.url ,size: '30x30'), user_path(current_user.id)%>
-            <%end%>
-            <%= link_to "Profile", user_path(current_user.id) %>
-            <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-          <% else %>
-            <div class="btn-login">
-              <%= link_to "ログイン", new_session_path %>
+            <div class="user-image pull-left">
+              <% if current_user.image.url.present? %>
+                <%= link_to image_tag(current_user.image.url ,size: '30x30'), user_path(current_user.id)%>
+              <%else%>
+                <%= link_to image_tag(no_image.png), user_path(current_user.id) %>
+              <%end%>
             </div>
-            <strong><%= link_to "登録", new_user_path %></strong>
+            <div class="menu">
+              <%= link_to 'Create', new_picture_path %>
+              <%= link_to "Profile", user_path(current_user.id) %>
+              <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+            </div>
+          <% else %>
+            <div class="menu">
+              <div class="btn-login">
+                <%= link_to "ログイン", new_session_path %>
+              </div>
+              <strong><%= link_to "登録", new_user_path %></strong>
+            </div>
           <% end %>
         </div>
       </div>

@@ -4,6 +4,7 @@ html {
 }
 body {
   background-color: #FAFAFA;
+  padding-top: 70px;
 }
 header {
   width: 100%;
@@ -39,4 +40,27 @@ input#user_name, input#user_email, input#user_password, input#user_password_conf
   border-radius: 2px;
   padding: 10px;
   background-color: #FAFAFA;
+}
+
+.user-image img{
+  border-radius: 50%;
+}
+.user-name {
+  display: inline-block;
+  margin-top: 5px;
+  a {
+  margin-left: 10px;
+  }
+}
+.image {
+  margin: 20px 0;
+  border-top: solid 1px #DBDBDB;
+  text-align: center;
+}
+.caption {
+  margin-bottom: 100px;
+}
+.dropdown button {
+  background-color: #FAFAFA;
+  border: solid 1px #DBDBDB;
 }
