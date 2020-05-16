@@ -1,7 +1,7 @@
 <div class="row">
   <div class="thumnail">
     <% @pictures.each do |picture| %>
-      <div class="picture-row">
+      <div class="contents-row container">
         <div class="user-image pull-left">
           <% if picture.user.image?%>
             <%= image_tag picture.user.image.url, size: '30x30'%>
@@ -22,13 +22,13 @@
               <li><a><%= link_to 'Show', picture_path(picture) %></a></li>
               <% if picture.user.id == current_user.id%>
                 <li><a><%= link_to 'Edit', edit_picture_path(picture) %></a></li>
-                <li><a><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></a></li>
+                <li><a><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'よろしいですか？' } %></a></li>
               <% end %>
             </ul>
           </div>
         </div>
         <div class="image">
-          <%= image_tag picture.image.url, size: '300x300' %>
+          <%= image_tag picture.image.url %>
         </div>
         <div class="caption">
           <p>いいね！数: <strong><%= picture.favorite_users.count %></strong></p>

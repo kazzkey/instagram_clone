@@ -17,16 +17,15 @@
         </div>
         <div class="navbar navbar-right">
           <% if logged_in? %>
-            <div class="user-image pull-left">
+            <div class="menu pull-left">
+              <%= link_to image_tag('create.png'), new_picture_path %>
+            </div>
+            <div class="user-image pull-right">
               <% if current_user.image.url.present? %>
-                <%= link_to image_tag(current_user.image.url ,size: '30x30'), user_path(current_user.id)%>
+                <%= link_to image_tag(current_user.image.url ,size: '32x32'), user_path(current_user.id)%>
               <%end%>
             </div>
-            <div class="menu">
-              <%= link_to 'Create', new_picture_path %>
-              <%= link_to "Profile", user_path(current_user.id) %>
-              <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-            </div>
+
           <% else %>
             <div class="menu">
               <div class="btn-login">
@@ -43,8 +42,9 @@
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
     </div>
-
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
     <footer>
       <p>c 2020 BAESTAGRAM FROM KAO-BON</p>
     </footer>

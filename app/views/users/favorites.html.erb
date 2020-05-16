@@ -1,9 +1,27 @@
-<h1>Favorite Pictures</h1>
+<div class="hidden-row">
+  <% @favorite_pictures.each do |favorite_picture| %>
+    <div class="user-image pill-left">
+      <% if favorite_picture.user.image?%>
+        <%= image_tag favorite_picture.user.image.url,size: '30x30' %>
+      <% else %>
+        <%= image_tag 'no_image.png',size: '30x30' %>
+      <% end %>
+    </div>
+    <div class="user-name">
+      <%= favorite_picture.user.name %>
+    </div>
+    <div class="date pull-right">
+      <%= favorite_picture.created_at.strftime('%Y/%m/%d %H:%M')%>
+    </div>
+    <div class="image">
+      <%= image_tag favorite_picture.image.url %>
+    </div>
+    <div class="caption">
+      <%= favorite_picture.content %>
+    </div>
+  <% end %>
+  <div class="btn back-btn pull-right">
+    <%= link_to '戻る', user_path %>
+  </div>
 
-<% @favorite_pictures.each do |favorite_picture| %>
-  <%= favorite_picture.user.name %>
-  <%= image_tag favorite_picture.image.url, size: '200x200' %>
-  <%= favorite_picture.content %>
-<% end %>
-
-<%= link_to 'Back', pictures_path %>
+</div>

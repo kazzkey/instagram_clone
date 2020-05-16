@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <br>
   <div class="form-group col-xs-12">
     <%= form.text_field :name, placeholder: "ユーザーネーム" %>
   </div>
@@ -20,14 +20,13 @@
   </div>
 
   <% if logged_in? %>
-    <div class="field">
-      <%= form.label :image %><br>
+    <div class="image col-xs-12">
       <%= form.file_field :image %>
     </div>
 
-    <div class="field">
+    <div class="textarea col-xs-12">
       <%= form.label :profile %><br>
-      <%= form.text_area :profile,size: '50x10' %>
+      <%= form.text_area :profile %>
     </div>
   <% else %>
     <div class="form-group col-xs-12">
@@ -39,7 +38,7 @@
     </div>
   <% end %>
   <div class="col-xs-12">
-    <div class="btn col-xs-12">
+    <div class="btn ok-btn col-xs-12">
       <%= form.submit "登録する" %>
     </div>
   </div>

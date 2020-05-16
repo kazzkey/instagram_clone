@@ -1,5 +1,6 @@
-<h1>Editing User</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'Back', user_path %>
+<div class="contents-row">
+  <%= render 'form', user: @user %>
+  <div class="btn edit-back-btn pull-right">
+    <%= link_to '戻る', user_path %>
+  </div>
+</div>

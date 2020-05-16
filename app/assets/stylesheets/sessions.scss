@@ -1,33 +1,14 @@
-.navbar-header img {
-  width: 40%;
-  margin-top: 6px;
-}
-.navbar-right {
-  margin: 15px 5px 0 0;
-}
-
-.logo img {
-  max-width: 80%;
-  height: auto;
-  margin: 30px 0;
+.logo {
+  max-width: 100%;
+  margin: 100px auto;
+  text-align: center;
 }
 .session-row {
-  max-width: 350px;
-  margin: auto;
-  background-color: #fff;
-}
-.picture-row {
   max-width: 600px;
   margin: auto;
   background-color: #fff;
-  border: solid 1px #DBDBDB;
-  border-radius: 1px;
-  padding: 15px;
-  margin-bottom: 50px;
 }
-.container {
-  text-align: center;
-}
+
 .form {
   border: solid 1px #DBDBDB;
   border-radius: 2px;
@@ -37,17 +18,53 @@
   border: solid 1px #2695F6;
   border-radius: 2px;
   background-color: #2695F6;
-  // padding: 5px;
-  & a {
-    color: #fff;
-    font-weight: bold;
+  a {
+  color: #fff;
   }
 }
-
+.back-btn {
+  margin-left: 20px;
+  margin-right: 30px;
+}
+.edit-back-btn {
+  margin: 20px 15px 0 0;
+}
 .session-suggest {
-  display: inline-block;
+  max-width: 600px;
+  margin: auto;
   border: solid 1px #DBDBDB;
   border-radius: 2px;
   padding: 20px 33px;
   margin-top: 10px;
+  background-color: #fff;
+}
+.user-image {
+  float: left;
+}
+.show-image {
+  margin: 40px 0 0 20px;
+}
+.profile-edit, .show-favorite {
+  font-weight: bold;
+  a {
+  border: solid 1px #DBDBDB;
+  border-radius: 2px;
+  padding: 10px 80px;
+  margin: 50px 20px 0 0;
+  display: block;
+  }
+}
+.logout {
+  font-weight: bold;
+  a {
+  background-color: #FAFAFA;
+  border: solid 1px #DBDBDB;
+  border-radius: 2px;
+  padding: 10px 20px;
+  margin: 150px 20px 0 0;
+  display: block;
+  }
+}
+.profile-count, .profile-contents {
+  margin: 40px 0 10px 30px;
 }

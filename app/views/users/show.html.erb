@@ -1,47 +1,51 @@
-<h1>User Page</h1>
+<div class="contents-row">
+  <div class="clearfix">
+    <div class="user-image show-image pill-left">
+      <% if @user.image?%>
+        <%= image_tag @user.image.url,size: '150x150' %>
+      <% else %>
+        <%= image_tag 'no_image.png',size: '150x150' %>
+      <% end %>
+    </div>
+    <div class="profile-edit pull-right">
+      <%if @user.id == current_user.id %>
+        <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+      <% end %>
+    </div>
+    <div class="show-favorite pull-right">
+      <%= link_to 'いいね！記事を表示', favorites_user_path(@user) %>
+    </div>
+  </div>
 
+  <div class="profile-count">
+    <p>
+      投稿<strong><%= @user.pictures.count %></strong>件
+    </p>
 
+    <p>
+      いいね！<strong><%= @user.favorites.count %></strong>件
+    </p>
+  </div>
 
-<div class="user-image">
-  <% if @user.image?%>
-    <%= image_tag @user.image.url,size: '200x200' %>
-  <% else %>
-    <%= image_tag 'no_image.png',size: '200x200' %>
+  <div class="profile-contents">
+    <p>
+      <strong><%= @user.name %></strong>
+    </p>
+    <p>
+      <%= @user.profile %>
+    </p>
+  </div>
+  <div class="logout pull-right">
+    <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+  </div>
+</div>
+
+<div class="row contents-row">
+  <p>＜投稿一覧＞</p>
+  <% @pictures.each do |picture| %>
+    <div class="col-xs-6">
+      <%= image_tag picture.image.url, size: '200x200' %>
+      <p><%= link_to '詳しく見る', picture %></p>
+    </div>
   <% end %>
 </div>
-
-<div class="profile-edit">
-  <%if @user.id == current_user.id %>
-    <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
-  <% end %>
-</div>
-
-<div class="profile-count">
-  <p>
-    投稿<strong><%= @user.pictures.count %></strong>件
-  </p>
-
-  <p>
-    お気に入り<strong><%= @user.favorites.count %></strong>件
-  </p>
-</div>
-
-<%= link_to 'お気に入りを表示', favorites_user_path(@user) %>
-
-<div class="profile-contents">
-  <p>
-    <strong><%= @user.name %></strong>
-  </p>
-  <p>
-    <%= @user.profile %>
-  </p>
-</div>
-
-<% @pictures.each do |picture| %>
-  <%= image_tag picture.image.url, size: '200x200' %>
-  <%= picture.content %>
-
-  <%= link_to 'Show', picture %>
-<% end %>
-<br>
-<%= link_to 'Back', pictures_path %>
