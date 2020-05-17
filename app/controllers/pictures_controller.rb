@@ -28,11 +28,11 @@ class PicturesController < ApplicationController
   def create
     @picture = current_user.pictures.build(picture_params)
 
-    if @picture.save
+    if params[:back]
+      render :new
+    elsif @picture.save
       PictureMailer.picture_mail(@picture).deliver
       redirect_to pictures_path, notice: '投稿完了しました！'
-    else
-      render :new
     end
   end
 

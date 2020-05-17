@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Baestagram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,31 +12,34 @@
 
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header navbar-brand">
-          <%= link_to image_tag('header_logo.png'), pictures_path %>
-        </div>
-        <div class="navbar navbar-right">
-          <% if logged_in? %>
-            <div class="menu pull-left">
-              <%= link_to image_tag('create.png'), new_picture_path %>
-            </div>
-            <div class="user-image pull-right">
-              <% if current_user.image.url.present? %>
-                <%= link_to image_tag(current_user.image.url ,size: '32x32'), user_path(current_user.id)%>
-              <%end%>
-            </div>
-
-          <% else %>
-            <div class="menu">
-              <div class="btn-login">
-                <%= link_to "ログイン", new_session_path %>
+      <header class="container">
+        <div class="header row">
+          <div class="navbar-right col-xs-6 pull-right">
+            <% if logged_in? %>
+              <div class="create-btn pull-right">
+                <%= link_to image_tag('create.png', size: '32x32'), new_picture_path %>
               </div>
-              <strong><%= link_to "登録", new_user_path %></strong>
-            </div>
-          <% end %>
+              <div class="user-image pull-right">
+                <% if current_user.image.url.present? %>
+                  <%= link_to image_tag(current_user.image.url, size: '32x32'), user_path(current_user.id) %>
+                <% else %>
+                  <%= link_to image_tag('face.png', size: '32x32'), user_path(current_user.id) %>
+                <%end%>
+              </div>
+            <% else %>
+              <div class="pull-right">
+                <div class="btn-login">
+                  <%= link_to "ログイン", new_session_path %>
+                </div>
+                <strong><%= link_to "登録", new_user_path %></strong>
+              </div>
+            <% end %>
+          </div>
+          <div class="navbar-brand col-xs-6 pull-left">
+            <%= link_to image_tag('header_logo.png'), pictures_path %>
+          </div>
         </div>
-      </div>
+      </header>
     </nav>
     <div class="alert">
       <% flash.each do |key, value| %>
@@ -45,7 +49,7 @@
     <div class="container">
       <%= yield %>
     </div>
-    <footer>
+    <footer class="row">
       <p>c 2020 BAESTAGRAM FROM KAO-BON</p>
     </footer>
   </body>

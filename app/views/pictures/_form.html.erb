@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="contents-row">
+  <div class="hidden-row">
     <div class="image img-responsive col-xs-12">
       <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
       <%= form.file_field :image %>
