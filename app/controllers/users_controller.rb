@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if logged_in?
+      flash[:notice] = "すでにログインしています"
+      redirect_to pictures_path
+    else
+      @user = User.new
+    end
   end
 
   def edit

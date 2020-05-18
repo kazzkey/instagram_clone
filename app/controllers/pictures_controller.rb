@@ -8,6 +8,9 @@ class PicturesController < ApplicationController
 
   def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+    @comment = Comment.new
+    @comment.picture_id = params[:picture_id]
+    @comments = @picture.comments
   end
 
   def new

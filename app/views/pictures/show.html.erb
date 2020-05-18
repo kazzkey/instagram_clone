@@ -37,8 +37,42 @@
     <%= image_tag @picture.image.url %>
   </div>
   <div class="caption">
-    <p>いいね！数: <strong><%= @picture.favorite_users.count %></strong></p>
+    <table>
+      <tr>
+        <td>いいね！数: <strong><%= @picture.favorite_users.count %></strong>／</td>
+        <td>コメント数: <strong><%= @picture.comments.count %></strong></td>
+      </tr>
+    </table>
+    <br>
     <p><%= @picture.created_at.strftime('%Y/%m/%d %H:%M') %></p>
     <h4><%= @picture.content %></h4>
+    <br>
+    <p>
+	    <button type="button" class="btn btn-default display-btn" data-toggle="collapse" data-target="#collapseSample1">
+		    コメント表示
+	    </button>
+    </p>
+    <div class="collapse" id="collapseSample1">
+	    <div class="well">
+        <table class="comments">
+          <% @picture.comments.each do |comment| %>
+            <tr>
+              <td class="comment-user small"><strong><%= link_to "#{comment.user.name}" , @user %></strong></td>
+              <td class="comment-content small"><%= comment.content %></td>
+            </tr>
+          <% end %>
+        </table>
+	    </div>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= form_with(model: [@picture, @comment], local: true) do |form| %>
+      <div class="form-group col-xs-12 ">
+        <%= form.text_field :content, placeholder: "コメントを追加..." %>
+      </div>
+      <div class="comment-btn pull-right">
+        <%= form.submit 'コメントする' %>
+      </div>
+    <% end %>
   </div>
 </div>
