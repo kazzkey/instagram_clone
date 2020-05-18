@@ -46,11 +46,13 @@
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
     </div>
-    <div class="container article">
+    <div class="container">
       <%= yield %>
     </div>
-    <footer class="row">
-      <p>c 2020 BAESTAGRAM FROM KAO-BON</p>
+    <footer class="container">
+      <div class="row">
+        <p>c 2020 BAESTAGRAM FROM KAO-BON</p>
+      </div>
     </footer>
   </body>
 </html>
