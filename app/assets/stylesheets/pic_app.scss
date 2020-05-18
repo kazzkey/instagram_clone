@@ -11,6 +11,9 @@ body {
 header {
   height: 70px;
 }
+.article {
+  height: 650px;
+}
 footer {
   width: 100%;
   margin: auto;
@@ -135,8 +138,7 @@ input#file-upload-button {
   border: solid 1px #2695F6;
   border-radius: 2px;
   background-color: #2695F6;
-  width: 20%;
-  margin-right: 15px;
+  margin-right: 20px;
   input {
     padding: 10px;
   }

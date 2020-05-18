@@ -1,37 +1,39 @@
 <div class="hidden-row">
-  <div class="user-image pull-left">
-    <% if @picture.user.image?%>
-      <%= image_tag @picture.user.image.url, size: '30x30'%>
-    <% else %>
-      <%= image_tag 'face.png',size: '30x30' %>
-    <% end %>
-  </div>
-  <div class="user-name">
-    <strong><%= link_to @picture.user.name , user_path(@picture.user.id) %></strong>
-  </div>
-  <div class="nav pull-right">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        menu
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a><%= link_to 'Show', picture_path(@picture) %></a></li>
-        <% if @picture.user.id == current_user.id%>
-          <li><a><%= link_to 'Edit', edit_picture_path(@picture) %></a></li>
-          <li><a><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'よろしいですか？' } %></a></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="favorite pull-right">
-    <% unless @picture.user_id == current_user.id %>
-      <% if @favorite.present? %>
-        <%= link_to 'いいね！解除', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <div class="row">
+    <div class="user-image pull-left">
+      <% if @picture.user.image?%>
+        <%= image_tag @picture.user.image.url, size: '30x30'%>
       <% else %>
-        <%= link_to 'いいね！する', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+        <%= image_tag 'face.png',size: '30x30' %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="user-name">
+      <strong><%= link_to @picture.user.name , user_path(@picture.user.id) %></strong>
+    </div>
+    <div class="nav pull-right">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          menu
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a><%= link_to 'Show', picture_path(@picture) %></a></li>
+          <% if @picture.user.id == current_user.id%>
+            <li><a><%= link_to 'Edit', edit_picture_path(@picture) %></a></li>
+            <li><a><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'よろしいですか？' } %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="favorite pull-right">
+      <% unless @picture.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <%= link_to 'いいね！解除', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'いいね！する', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="image">
     <%= image_tag @picture.image.url %>
@@ -65,7 +67,7 @@
 	    </div>
     </div>
   </div>
-  <div class="clearfix">
+  <div class="">
     <%= form_with(model: [@picture, @comment], local: true) do |form| %>
       <div class="form-group col-xs-12 ">
         <%= form.text_field :content, placeholder: "コメントを追加..." %>
