@@ -24,7 +24,7 @@ gem 'faker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'dotenv-rails'
-gem 'unicorn'
+gem 'unicorn', '5.4.1'
 gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
