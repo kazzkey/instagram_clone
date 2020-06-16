@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'sessions#new'
+  root to: 'pictures#index'
   resources :favorites, only: [:create, :destroy]
   resources :pictures do
     collection do
